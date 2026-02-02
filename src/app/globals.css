@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --stage-gold: #FFD700;
+  --stage-neon-green: #39FF14;
+  --stage-neon-red: #FF3131;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-stage-gold: var(--stage-gold);
+  --color-stage-neon-green: var(--stage-neon-green);
+  --color-stage-neon-red: var(--stage-neon-red);
+
+  --background-image-spotlight: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.7s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+}
+
+.spotlight-overlay {
+  background-image: var(--background-image-spotlight);
+  pointer-events: none;
+}
+
+.gold-glow {
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.neon-border-green {
+  border: 1px solid var(--stage-neon-green);
+  box-shadow: 0 0 5px var(--stage-neon-green);
+}
+
+.neon-border-red {
+  border: 1px solid var(--stage-neon-red);
+  box-shadow: 0 0 5px var(--stage-neon-red);
+}
+
+/* 추가 유효성 검사 스타일 */
+input:invalid:not(:placeholder-shown) {
+  border-color: var(--stage-neon-red);
+}
