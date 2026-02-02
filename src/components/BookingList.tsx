@@ -35,7 +35,7 @@ export const BookingList = ({ refreshTrigger }: { refreshTrigger?: number }) => 
                         <thead className="bg-zinc-950/50 text-zinc-400 text-xs uppercase tracking-wider">
                             <tr>
                                 <th className="px-6 py-4 font-semibold">사용 날짜/시간</th>
-                                <th className="px-6 py-4 font-semibold">학년반</th>
+                                <th className="px-6 py-4 font-semibold">학년반/이름</th>
                                 <th className="px-6 py-4 font-semibold text-right">상태</th>
                             </tr>
                         </thead>
@@ -51,13 +51,14 @@ export const BookingList = ({ refreshTrigger }: { refreshTrigger?: number }) => 
                                             <div className="font-medium text-white">{b.use_date}</div>
                                             <div className="text-xs text-zinc-500">{b.use_time}</div>
                                         </td>
-                                        <td className="px-6 py-4 text-zinc-300">
-                                            {b.grade_class}
+                                        <td className="px-6 py-4">
+                                            <div className="text-zinc-300 font-medium">{b.student_name}</div>
+                                            <div className="text-xs text-zinc-500">{b.grade_class}</div>
                                         </td>
                                         <td className="px-6 py-4 text-right">
                                             <span className={`px-2 py-1 rounded-full text-[10px] font-bold ${b.status === 'approved' ? 'bg-stage-neon-green/10 text-stage-neon-green' :
-                                                    b.status === 'rejected' ? 'bg-stage-neon-red/10 text-stage-neon-red' :
-                                                        'bg-zinc-800 text-zinc-400'
+                                                b.status === 'rejected' ? 'bg-stage-neon-red/10 text-stage-neon-red' :
+                                                    'bg-zinc-800 text-zinc-400'
                                                 }`}>
                                                 {b.status === 'approved' ? '예약확정' : b.status === 'rejected' ? '취소됨' : '승인대기'}
                                             </span>
